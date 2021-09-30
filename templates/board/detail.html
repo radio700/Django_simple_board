@@ -5,24 +5,26 @@
     <div class="card">
       <div class="card-body">
         <p class="card-text">{{ question.content }}</p>
+        <p class="card-text d-flex flex-row-reverse">{{ question.author }}</p>
         <p class="card-text d-flex flex-row-reverse">{{ question.create_date }}</p>
       </div>
     </div>
     <span>{{question.answer_set.count}}개의 답변이 있습니다</span>
 
     {% for answer in question.answer_set.all %}
-    <div class="card">
-      <div class="card-body">
-        <p class="card-text">{{answer.content}}</p>
-        <p class="card-text d-flex flex-row-reverse">{{answer.create_date}}</p>
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">{{answer.content}}</p>
+          <p class="card-text d-flex flex-row-reverse">{{ answer.author }}</p>
+          <p class="card-text d-flex flex-row-reverse">{{ answer.create_date }}</p>
+        </div>
       </div>
-    </div>
     {% endfor %}
 
     <form action="{% url 'board:answer_create' question.id %}" method="post">
       {% csrf_token %}
       <label for="content">답변을 남겨주세요</label>
-      <textarea name="content" class="form-control" id="content" rows="10"></textarea>
+      <textarea {% if not user.is_authenticated %}disabled{% endif %} name="content" class="form-control" id="content" rows="10"></textarea>
       <button class="btn btn-primary">제출</button>
     </form>
   </div>
