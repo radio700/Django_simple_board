@@ -7,6 +7,10 @@
         <p class="card-text">{{ question.content }}</p>
         <p class="card-text d-flex flex-row-reverse">{{ question.author }}</p>
         <p class="card-text d-flex flex-row-reverse">{{ question.create_date }}</p>
+        {% if request.user == question.author %}
+            <a class="btn btn-primary" href="{% url 'board:question_modify' question.id %}">수정하기</a>
+            <a class="btn btn-warning" href="{% url 'board:question_delete' question.id %}">삭제하기</a>
+        {% endif %}
       </div>
     </div>
     <span>{{question.answer_set.count}}개의 답변이 있습니다</span>
@@ -17,6 +21,10 @@
           <p class="card-text">{{answer.content}}</p>
           <p class="card-text d-flex flex-row-reverse">{{ answer.author }}</p>
           <p class="card-text d-flex flex-row-reverse">{{ answer.create_date }}</p>
+          {% if request.user == answer.author %}
+            <a class="btn btn-primary" href="{% url 'board:answer_modify' answer.id %}">수정하기</a>
+            <a class="btn btn-warning" href="{% url 'board:answer_delete' answer.id %}">삭제하기</a>
+          {% endif %}
         </div>
       </div>
     {% endfor %}

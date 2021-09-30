@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="container">
+  <form method="post">
+    {% csrf_token %}
+    {% include 'error.html' %}
+    <div class="form-group">
+      <label for="content">답변내용</label>
+      <textarea name="content" id="content" class="form-control" rows="10"></textarea>
+      <button class="btn btn-primary" type="submit">수정하기</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
