@@ -1,3 +1,27 @@
-{% for question in question_list %}
-  <a href="{% url 'board:detail' question.id %}">{{ question }}</a>
-{% endfor %}
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>날짜</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for question in question_list %}
+        <tr>
+            <td>{{ question.id }}</td>
+            <td>
+              <a href="{% url 'board:detail' question.id %}">{{ question }}</a>
+            </td>
+            <td>{{ question.create_date }}</td>
+        </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+    <a href="{% url 'board:question_create' %}" class="btn btn-primary">글쓰기</a>
+  </div>
+
+{% endblock content %}

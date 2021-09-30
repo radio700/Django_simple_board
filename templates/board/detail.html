@@ -1,16 +1,29 @@
-<h1>{{ question.subject }}</h1>
-<span>{{ question.content }}</span>
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <h1>{{ question.subject }}</h1>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text">{{ question.content }}</p>
+        <p class="card-text d-flex flex-row-reverse">{{ question.create_date }}</p>
+      </div>
+    </div>
+    <span>{{question.answer_set.count}}개의 답변이 있습니다</span>
 
-{{question.answer_set.count}}
+    {% for answer in question.answer_set.all %}
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text">{{answer.content}}</p>
+        <p class="card-text d-flex flex-row-reverse">{{answer.create_date}}</p>
+      </div>
+    </div>
+    {% endfor %}
 
-{% for answer in question.answer_set.all %}
-  {{answer.content}}
-{% endfor %}
-
-
-<form action="{% url 'board:answer_create' question.id %}" method="post">
-  {% csrf_token %}
-  <label for="content">답변을 남겨주세요</label>
-  <textarea name="content" id="content" rows="10"></textarea>  
-  <button class="btn btn-primary">제출</button>
-</form>
+    <form action="{% url 'board:answer_create' question.id %}" method="post">
+      {% csrf_token %}
+      <label for="content">답변을 남겨주세요</label>
+      <textarea name="content" class="form-control" id="content" rows="10"></textarea>
+      <button class="btn btn-primary">제출</button>
+    </form>
+  </div>
+{% endblock %}
