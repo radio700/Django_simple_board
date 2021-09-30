@@ -1,0 +1,16 @@
+<h1>{{ question.subject }}</h1>
+<span>{{ question.content }}</span>
+
+{{question.answer_set.count}}
+
+{% for answer in question.answer_set.all %}
+  {{answer.content}}
+{% endfor %}
+
+
+<form action="{% url 'board:answer_create' question.id %}" method="post">
+  {% csrf_token %}
+  <label for="content">답변을 남겨주세요</label>
+  <textarea name="content" id="content" rows="10"></textarea>  
+  <button class="btn btn-primary">제출</button>
+</form>
