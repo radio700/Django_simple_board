@@ -3,11 +3,15 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse
 from board.models import Question,Answer
 from board.forms import AnswerForm, QuestionForm
+from django.core.paginator import Paginator
 # Create your views here.
 
 def index(request):
   question_list = Question.objects.order_by('-create_date')
-  context = {'question_list':question_list}
+  page_match_page = request.GET.get('page')
+  one_page_dang = Paginator(question_list,10)
+  page_obj = one_page_dang.get_page(page_match_page)
+  context = {'question_list':page_obj}
   return render(request,'board/index.html',context)
 
 def detail(request,question_id):

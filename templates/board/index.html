@@ -10,17 +10,62 @@
         </tr>
       </thead>
       <tbody>
-          {% for question in question_list %}
-        <tr>
+        {% for question in question_list %}
+          <tr>
             <td>{{ question.id }}</td>
             <td>
-              <a href="{% url 'board:detail' question.id %}">{{ question }}</a>
+              <a href="{% url 'board:detail' question.id %}" class="text-decoration-none text-black">{{ question.subject }}</a>
+              {% if question.answer_set.count > 0 %}
+                <span class="text-danger">{{ question.answer_set.count }}</span>
+              {% endif %}
             </td>
             <td>{{ question.create_date }}</td>
-        </tr>
-          {% endfor %}
+          </tr>
+        {% endfor %}
       </tbody>
     </table>
+
+    <!--페이지네이터-->
+    <ul class="pagination justify-content-center">
+      <!-- 이전페이지-->
+      {% if question_list.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ question_list.previous_page_number }}">Previous</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <a class="page-link disabled" href="#">Previous</a>
+        </li>
+      {% endif %}
+
+      <!-- 현재페이지-->
+      {% for page_number in question_list.paginator.page_range %}
+        {% if page_number >= question_list.number|add:-5 and page_number <= question_list.number|add:5 %}
+          {% if page_number == question_list.number %}
+            <li class="page-item active">
+              <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+          {% else %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      <!-- 다음페이지-->
+      {% if question_list.has_next %}
+        <li>
+          <a class="page-link" href="?page={{ question_list.next_page_number }}">Next</a>
+        </li>
+      {% else %}
+        <li>
+          <a class="page-link disabled" href="#">Next</a>
+        </li>
+      {% endif %}
+    </ul>
+
+
     <a href="{% url 'board:question_create' %}" class="btn btn-primary">글쓰기</a>
   </div>
 
