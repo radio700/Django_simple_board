@@ -2,73 +2,92 @@
 {% block content %}
   <div class="container">
     <h1>{{ question.subject }}</h1>
-    <div class="card">
-      <div class="card-body">
-        <p class="card-text">{{ question.content }}</p>
-        <p class="card-text d-flex flex-row-reverse">{{ question.author }}</p>
-        <p class="card-text d-flex flex-row-reverse">{{ question.create_date }}</p>
-        {% if request.user == question.author %}
-            <a class="btn btn-primary" href="{% url 'board:question_modify' question.id %}">수정하기</a>
-            <a class="btn btn-warning" href="{% url 'board:question_delete' question.id %}">삭제하기</a>
-        {% endif %}
+    <div class="row">
+      <div class="col-1">
+        <div class="border text-center bg-light mb-1 font-weight-bolder p-3">{{ question.voter.count }}</div>
+        <a href="{% url 'board:vote_question' question.id  %}" class="btn btn-primary">추천하기</a>
+      </div>
+      <div class="col-11">
 
-        
-        {% if question.comment_set.count > 0 %}
-          {% for comment in question.comment_set.all %}
-            <span>{{ comment.content }}</span>
-            <span>
-              {{ comment.author }}, {{ comment.create_date }}
-              {% if comment.modify_date %}
-                수정: {{ comment.modify_date }}
-              {% endif %}
-            </span>
-            {% if request.user == comment.author %}
-              <a href="{% url 'board:comment_modify_question' comment.id %}">수정</a>
-              <a href="{% url 'board:comment_delete_question' comment.id %}">삭제</a>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">{{ question.content }}</p>
+            <p class="card-text d-flex flex-row-reverse">{{ question.author }}</p>
+            <p class="card-text d-flex flex-row-reverse">{{ question.create_date }}</p>
+            {% if request.user == question.author %}
+              <a class="btn btn-primary" href="{% url 'board:question_modify' question.id %}">수정하기</a>
+              <a class="btn btn-warning" href="{% url 'board:question_delete' question.id %}">삭제하기</a>
             {% endif %}
-          {% endfor %}
-        {% endif %}
-        <div>
-          <a href="{% url 'board:comment_create_question' question.id %}">댓글추가</a>
-        </div>
 
+            {% if question.comment_set.count > 0 %}
+              {% for comment in question.comment_set.all %}
+                <span>{{ comment.content }}</span>
+                <span>
+                  {{ comment.author }},
+                  {{ comment.create_date }}
+                  {% if comment.modify_date %}
+                    수정:
+                    {{ comment.modify_date }}
+                  {% endif %}
+                </span>
+                {% if request.user == comment.author %}
+                  <a href="{% url 'board:comment_modify_question' comment.id %}">수정</a>
+                  <a href="{% url 'board:comment_delete_question' comment.id %}">삭제</a>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            <div>
+              <a href="{% url 'board:comment_create_question' question.id %}">댓글추가</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
     <span>{{question.answer_set.count}}개의 답변이 있습니다</span>
 
     {% for answer in question.answer_set.all %}
-      <div class="card">
-        <div class="card-body">
-          <p class="card-text">{{answer.content}}</p>
-          <p class="card-text d-flex flex-row-reverse">{{ answer.author }}</p>
-          <p class="card-text d-flex flex-row-reverse">{{ answer.create_date }}</p>
-          {% if request.user == answer.author %}
-            <a class="btn btn-primary" href="{% url 'board:answer_modify' answer.id %}">수정하기</a>
-            <a class="btn btn-warning" href="{% url 'board:answer_delete' answer.id %}">삭제하기</a>
-          {% endif %}
-
-        {% if answer.comment_set.count > 0 %}
-          {% for comment in answer.comment_set.all %}
-            <span>{{ comment.content }}</span>
-            <span>
-              {{ comment.author }}, {{ comment.create_date }}
-              {% if comment.modify_date %}
-                수정: {{ comment.modify_date }}
-              {% endif %}
-            </span>
-            {% if request.user == comment.author %}
-              <a href="{% url 'board:comment_modify_answer' comment.id %}">수정</a>
-              <a href="{% url 'board:comment_delete_answer' comment.id %}">삭제</a>
-            {% endif %}
-          {% endfor %}
-        {% endif %}
-        <div>
-          <a href="{% url 'board:comment_create_answer' answer.id %}">댓글추가</a>
+      <a name="answer_{{ answer.id }}"></a>
+      <div class="row">
+        <div class="col-1">
+          <div class="border text-center bg-light mb-1 font-weight-bolder p-3">{{ answer.voter.count }}</div>
+          <a href="{% url 'board:vote_answer' answer.id  %}" class="btn btn-primary">추천하기</a>
         </div>
+        <div class="col-11">
 
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text">{{answer.content}}</p>
+              <p class="card-text d-flex flex-row-reverse">{{ answer.author }}</p>
+              <p class="card-text d-flex flex-row-reverse">{{ answer.create_date }}</p>
+              {% if request.user == answer.author %}
+                <a class="btn btn-primary" href="{% url 'board:answer_modify' answer.id %}">수정하기</a>
+                <a class="btn btn-warning" href="{% url 'board:answer_delete' answer.id %}">삭제하기</a>
+              {% endif %}
 
+              {% if answer.comment_set.count > 0 %}
+                {% for comment in answer.comment_set.all %}
+                  <span>{{ comment.content }}</span>
+                  <span>
+                    {{ comment.author }},
+                    {{ comment.create_date }}
+                    {% if comment.modify_date %}
+                      수정:
+                      {{ comment.modify_date }}
+                    {% endif %}
+                  </span>
+                  {% if request.user == comment.author %}
+                    <a href="{% url 'board:comment_modify_answer' comment.id %}">수정</a>
+                    <a href="{% url 'board:comment_delete_answer' comment.id %}">삭제</a>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              <div>
+                <a href="{% url 'board:comment_create_answer' answer.id %}">댓글추가</a>
+              </div>
 
-
+            </div>
+          </div>
         </div>
       </div>
     {% endfor %}

@@ -1,6 +1,6 @@
 from django.core.checks import messages
 from django.utils import timezone
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import get_object_or_404, redirect, render, resolve_url
 from board.models import Question,Answer
 from board.forms import AnswerForm
 from django.contrib.auth.decorators import login_required
@@ -16,7 +16,8 @@ def answer_create(request,question_id):
       answer.create_date = timezone.now()
       answer.author = request.user
       answer.save()
-      return redirect('board:detail', question_id=question.id)
+      return redirect('{}#answer_{}'.format(resolve_url('board:detail', question_id=question.id), answer.id))
+      # return redirect('board:detail', question_id=question.id)
   else:
     form = AnswerForm()
   context = {'form':form, 'question':question}
@@ -35,7 +36,8 @@ def answer_modify(request,answer_id):
           answer = form.save(commit=False)
           answer.modify_date = timezone.now()
           answer.save()
-          return redirect('board:detail', question_id=answer.question.id)
+          return redirect('{}#answer_{}'.format(resolve_url('board:detail', question_id=answer.question.id), answer.id))
+          # return redirect('board:detail', question_id=answer.question.id)
   else:
       form = AnswerForm(instance=answer)
   context = {'answer': answer, 'form': form}
