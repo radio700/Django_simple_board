@@ -1,8 +1,9 @@
-<header class="bg-primary">
+<header class="bg-primary py-1">
   <div class="container">
-    <ul class="nav">
+    <ul class="nav d-flex ">
       <li class="nav-item flex-grow-1 d-flex align-items-center">
-        <a class="nav-link active text-white fs-4 align-content-center " aria-current="page" href="{% url 'board:index' %}">JSnetwork</a>
+        <a href="{% url 'main:index' %}"><img id="mi" class="me-5" src="/static/home.png" alt=""></a>
+        <a class="nav-link active text-white align-content-center  aria-current="page" href="{% url 'board:index' %}">게시판보기</a>
       </li>
       <li class="nav-item d-flex align-items-center">
         {% if user.is_authenticated %}
