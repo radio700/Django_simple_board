@@ -1,7 +1,6 @@
 const mainicon = document.querySelector("#mi");
 
 
-console.dir(mainicon);
 mainicon.width = 30;
 
 function mouseov(){
@@ -12,5 +11,6 @@ function outmouse(){
   mainicon.width =30;
 }
 
+// console.dir(mainicon);
 mainicon.addEventListener("mouseover",mouseov)
 mainicon.addEventListener("mouseout",outmouse)

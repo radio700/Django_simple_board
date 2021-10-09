@@ -1,14 +1,43 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container">
+  <section class="hero">
+    <img id="background" src="/static/img/wallpaper/mainwall-1.jpg" alt="">
+    <div class="container">
+      <!--배경글자-->
+      <section class="bg-text">
+        <h1>This is SJ portpolio</h1>
+        <h4>잘봐라 쑈 미터 머니!</h4>
+      </section>
+    </div>
 
-asfbasdfbeeeeeeee
+    <!--weather-->
+    <section id="weather">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </section>
+  </section>
 
-</div>
+  <section class="weather">
+    <img id="background-weather" src="" alt="">
+  </section>
 
+  <section class="map">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-12">
+          <div id="map" class="shadow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-
-
-
+  <script src="/static/javascript/map.js"></script>
+  <script src="/static/javascript/weather.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTQIlxBn5AfKGvsfJiormAE1esN3fcCkg&callback=initMap" async="async" defer="defer"></script>
 {% endblock content %}
