@@ -54,6 +54,7 @@ body{
   top:50%;
   position: absolute;
   text-align: center;
+  transform: translate(-50%,-50%);
 }
 
 .hero .bg-text>h1{
@@ -67,17 +68,15 @@ body{
 
 /* 날씨 */
 #weather{
-  position: relative;
+  /* position: relative;
+  display: none; */
 }
 
 #weather span{
   /* visibility:hidden; */
 }
 
-#background-weather{
-  position: relative;
-  top: 850px;
-}
+
 
 /* #con{
   width: 100%;
