@@ -14,33 +14,42 @@ function onGeoOk(position) {
   console.log(url);
   //API 호출은 https://openweathermap.org/current 에 By geographic coordinates에서 확인
   fetch(url).then(response => response.json()).then(data => {
-    const city = document.querySelector("#weather span:nth-child(1)");
-    const weather = document.querySelector("#weather span:nth-child(2)");
-    const wind_speed = document.querySelector("#weather span:nth-child(4)");
-    const temp = document.querySelector("#weather span:nth-child(5)");
-    const humid = document.querySelector("#weather span:nth-child(6)");
-    const wind_deg = document.querySelector("#weather span:nth-child(7)");
+    const city = document.querySelector("#weather div.w1");
+    const weather = document.querySelector("#weather div.w2");
+    const wind_speed = document.querySelector("#weather div.w3");
+    const temp = document.querySelector("#weather div.w4");
+    const humid = document.querySelector("#weather div.w5");
+    const wind_deg = document.querySelector("#weather div.w6");
 
-    weather.innerText = String(`현재 날씨는 ${data.weather[0].main}\n`);
-    city.innerText = String(`현재 장소는 ${data.name}입니다\n`);
+    city.innerText = String(`현재 계신 곳 : ${data.name}시\n`);
+    weather.innerText = String(`${data.weather[0].main}`);
     wind_speed.innerText = String(`현재 풍속은 ${data.wind.speed}\n`);
     temp.innerText = String(`현재 온도는 ${data.main.temp}도\n`);
     humid.innerText = String(`습도는 ${data.main.humidity}% 입니다\n`);
 
     //날씨별 색깔변화
 
-    if ((weather.innerText = "Clear")) {
+    if (weather.innerText == "Clear") {
       document.querySelector("#background-weather").src = "/static/img/clear.jpg";
+      document.querySelector("#wicon").src = "/static/img/icon_clear.png";
+      weather.innerText = "날씨 : 맑음\n";
     }
-    if ((weather.innerText = "Clouds")) {
+    else if (weather.innerText == "Clouds") {
       document.querySelector("#background-weather").src = "/static/img/clouds.jpg";
+      document.querySelector("#wicon").src = "/static/img/icon_cloud.png";
+      weather.innerText = "날씨 : 구름낌\n";
     }
-		else{
-			alert("날씨인자 없음")
-		}
+    else if (weather.innerText == "Rain") {
+      document.querySelector("#background-weather").src = "/static/img/Rain.jpg";
+      document.querySelector("#wicon").src = "/static/img/icon_rain.png";
+      weather.innerText = "날씨 : 비\n";
+    }
+    else {
+      alert("날씨인자 없음");
+    }
+
     // Clouds	Mist	Smoke	Haze	Dust	Fog	Sand	Dust	Ash	Squall	Tornado
     // Snow	Rain	Drizzle	Thunderstorm
-
 
     //wind
     wind_deg.innerText = data.wind.deg;

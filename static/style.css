@@ -76,17 +76,26 @@ section.weather-main{
   position: relative;
 }
 
-#weather{
-  position: absolute;
-  color: #FEFDFE;
-  left:50%;
-  top:50%;
-  text-align: center;
-  transform: translate(-50%,-50%);
+section.weather-main #wicon{
+  width: 100%;
 }
 
-#weather span{
+section.weather-main .row{
+  position: absolute;
+  top: 50%; 
+  transform: translate(0%,-50%); 
+}
+#weather{
+  margin: 40px 40px;
+}
+#weather>h1{
+  margin-bottom: 30px;
+}
 
+#weather div{
+  color: rgba(0, 0, 0, .8);
+  font-size: 30px;
+  padding-bottom: 30px;
 }
 
 
