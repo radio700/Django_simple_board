@@ -71,13 +71,22 @@ body{
 
 
 /* 날씨 */
+
+section.weather-main{
+  position: relative;
+}
+
 #weather{
-  /* position: relative;
-  display: none; */
+  position: absolute;
+  color: #FEFDFE;
+  left:50%;
+  top:50%;
+  text-align: center;
+  transform: translate(-50%,-50%);
 }
 
 #weather span{
-  /* visibility:hidden; */
+
 }
 
 

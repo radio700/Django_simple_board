@@ -14,14 +14,14 @@ function onGeoOk(position) {
   console.log(url);
   //API 호출은 https://openweathermap.org/current 에 By geographic coordinates에서 확인
   fetch(url).then(response => response.json()).then(data => {
-    const weather = document.querySelector("#weather span:nth-child(1)");
-    const city = document.querySelector("#weather span:nth-child(2)");
+    const city = document.querySelector("#weather span:nth-child(1)");
+    const weather = document.querySelector("#weather span:nth-child(2)");
     const wind_speed = document.querySelector("#weather span:nth-child(4)");
     const temp = document.querySelector("#weather span:nth-child(5)");
     const humid = document.querySelector("#weather span:nth-child(6)");
     const wind_deg = document.querySelector("#weather span:nth-child(7)");
 
-    weather.innerText = `${data.weather[0].main}`;
+    weather.innerText = String(`현재 날씨는 ${data.weather[0].main}\n`);
     city.innerText = String(`현재 장소는 ${data.name}입니다\n`);
     wind_speed.innerText = String(`현재 풍속은 ${data.wind.speed}\n`);
     temp.innerText = String(`현재 온도는 ${data.main.temp}도\n`);
