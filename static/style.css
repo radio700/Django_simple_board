@@ -47,6 +47,10 @@ body{
   width: 100%;
 }
 
+.hero #background-weather{
+  width: 100%;
+}
+
 
 .hero .bg-text{
   color: #FEFDFE;
