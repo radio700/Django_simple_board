@@ -7,7 +7,7 @@ function onGeoOk(position) {
 
   const lat = position.coords.latitude; //위도
   const lon = position.coords.longitude; //경도
-  console.log("님 여기삼", lat, lon);
+  // console.log("님 여기삼", lat, lon);
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
   // https://api.openweathermap.org/data/2.5/weather?lat=35.190192&lon=128.1270761&appid=dc112664b734973e12fe221508a38ebe&units=metric
 
@@ -21,11 +21,16 @@ function onGeoOk(position) {
     const humid = document.querySelector("#weather div.w5");
     const wind_deg = document.querySelector("#weather div.w6");
 
+    
+    document.querySelector("#weather span.lat7").innerText = position.coords.latitude;
+    document.querySelector("#weather span.lon8").innerText = position.coords.longitude;
     city.innerText = String(`현재 계신 곳 : ${data.name}시\n`);
     weather.innerText = String(`${data.weather[0].main}`);
-    wind_speed.innerText = String(`현재 풍속은 ${data.wind.speed}\n`);
+    wind_speed.innerText = String(`현재 풍속은 ${data.wind.speed}m/s\n`);
     temp.innerText = String(`현재 온도는 ${data.main.temp}도\n`);
     humid.innerText = String(`습도는 ${data.main.humidity}% 입니다\n`);
+    // glat.innerText = `${lat}`
+    // glon.innerText = `${lon}`
 
     //날씨별 색깔변화
 

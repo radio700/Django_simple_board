@@ -8,7 +8,7 @@
       <!--배경글자-->
       <section class="bg-text">
         <h1>This is SJ portpolio</h1>
-        <h4>잘봐라 쑈 미터 머니!</h4>
+        <h4>l'existence précède l'essence</h4>
       </section>
     </div>
     <section class="weather-main">
@@ -27,24 +27,28 @@
               <div class="w4"></div>
               <div class="w5"></div>
               <div class="w6"></div>
+              <span class="lat7"></span>
+              <span class="lon8"></span>
             </section>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="map">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-12">
+            <h1>현재 방문자님의 장소</h1>
+          </div>
+          <div class="col-lg-8 col-12">
+            <div id="map" class="shadow"></div>
           </div>
         </div>
       </div>
     </section>
   </section>
 
-  <section class="map">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-12">
-          <div id="map" class="shadow"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script src="/static/javascript/map.js"></script>
   <script src="/static/javascript/weather.js"></script>
+  <script src="/static/javascript/map.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTQIlxBn5AfKGvsfJiormAE1esN3fcCkg&callback=initMap" async="async" defer="defer"></script>
 {% endblock content %}
