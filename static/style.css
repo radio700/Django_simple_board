@@ -1,24 +1,66 @@
+html{
+  scroll-behavior: smooth;
+  
+} 
+
 body{
   font-family: 'Poppins', sans-serif;
   padding-top: 40px;
 }
 
+
+
 #row-login{
-  margin-top: 200px;
+  margin-top: 50px;
   border-width: 1px;
   padding: 30px;
   border-style: solid;
   border-radius: 30px;
-  
 }
 
-#signupb{
-  margin: 200px;
-  border-style: solid;
-  border-width: 1px;
+#sign-up{
+  margin-top: 50px;
+  /* padding-top: 200px; */
   padding: 30px;
+  border-width: 1px;
+  border-style: solid;
   border-radius: 30px;
 }
+
+/* 기타웹페이지 */
+
+body div.gray-side-wall{
+  background-color: #CFCFCF;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+div.main-wall{
+  background-color: #fff;
+  padding: 30px;
+  height: 100%;
+  z-index: 0;
+}
+/* 인덱스페이지 */
+.gul-wri{
+  position: relative;
+  right: -93%;
+}
+.t-obj:link{
+  color: black;
+}
+.t-obj:visited{
+  color: #969696;
+}
+
+
+/* 디테일페이지 */
+.detail-subject{
+  padding-bottom: 30px;
+  padding-top: 10px;
+}
+
+
 
 /* 네비 */
 #nav-header{
@@ -26,23 +68,33 @@ body{
   top: 0;
   left: 0;
   right: 0;
-  height: 40px;
+  padding: 5px;
   font-weight: bold;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #FEFDFE;
+  background-color: #2E4361;
   z-index: 1;
 }
+#nav-header [data-bs-toggle="offcanvas"] {
+  display: none;
+}
+
+#nav-header li.nav-item a{
+  color:rgba(255, 255, 255, .5);
+  transition: 0.5s;
+}
+#nav-header li.nav-item a:hover{
+  color: #fff;
+}
+
 
 /* 히어로텍스트 */
 .hero{
   height: 15px;
 }
 
-.hero .container{
-  
-}
+
 
 .hero img#background{
   width: 100%;
@@ -72,7 +124,6 @@ body{
 
 
 /* 날씨 */
-
 section.weather-main{
   position: relative;
 }
@@ -102,16 +153,25 @@ section.weather-main .row{
   display: none;
 }
 
-/* map */
+/* map 지도 */
 section.map{
   position: relative;
   background-color:rgb(163, 204, 163);
-  padding: 40px 0px 40px;
+  padding: 110px 0px 110px;
 }
 
 section.map .row h1{
   margin-top: 150px;
 }
+
+/* 푸터 */
+footer{
+  background-color: #CFCFCF;
+  padding: 50px;
+}
+
+
+
 
 /* 미디어쿼리 */
 @media (max-width:992px){
@@ -147,8 +207,19 @@ section.map .row h1{
   .hero .bg-text>h4{
     font-size: 20px;
     display: none;
-
   }
+  #nav-header [data-bs-toggle="offcanvas"] {
+    display: block;
+  }
+
+
+
+  #nav-header li a[name="offhide"]{
+    display: none;
+  }
+  /* #nav-header li a.nav-link:not(:first-child)[0]{
+    display: none;
+  } */
 }
 @media (max-width:768px){
   .hero .bg-text{
@@ -160,6 +231,8 @@ section.map .row h1{
   #weather div{
     font-size: 15px;
   }
+
+
 }
 
 @media (max-width:576px){
