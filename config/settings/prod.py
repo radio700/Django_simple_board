@@ -1,5 +1,3 @@
 from .base import *
 
-ALLOWED_HOSTS = ['13.209.187.109']
-STATIC_ROOT = BASE_DIR / 'static/'
-STATICFILES_DIRS =[]
+ALLOWED_HOSTS = ['3.35.65.164']

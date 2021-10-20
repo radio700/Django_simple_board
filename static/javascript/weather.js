@@ -63,7 +63,7 @@ function onGeoOk(position) {
     } else if (data.wind.deg == 90) {
       wind_deg.innerText = "동풍이 불고 있습니다";
     } else if ((data.wind.deg > 90) & (data.wind.deg < 180)) {
-      wind_deg.innerText = "남동이 불고 있습니다";
+      wind_deg.innerText = "남동풍이 불고 있습니다";
     } else if (data.wind.deg == 180) {
       wind_deg.innerText = "남풍이 불고 있습니다";
     } else if (data.wind.deg > 180 && data.wind.deg < 270) {
