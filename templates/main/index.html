@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
+  <script src="/static/javascript/weather.js"></script>
+  <script src="/static/javascript/map.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTQIlxBn5AfKGvsfJiormAE1esN3fcCkg&callback=initMap" async="async" defer="defer"></script>
   <section class="hero">
     <img id="background" src="/static/img/wallpaper/mainwall-1.jpg" alt="">
 
@@ -11,9 +14,9 @@
         <h4>l'existence précède l'essence</h4>
       </section>
     </div>
-    <a href="" name="weather-main"></a>
+    <a href="#" name="weather-main"></a>
     <section class="weather-main" >
-      <img id="background-weather" src="" alt="">
+      <img id="background-weather" src="#" alt="bg-weather">
       <div class="container">
         <div class="row">
           <div class="col-6">
@@ -54,7 +57,4 @@
   </section>
   
 
-  <script src="/static/javascript/weather.js"></script>
-  <script src="/static/javascript/map.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTQIlxBn5AfKGvsfJiormAE1esN3fcCkg&callback=initMap" async="async" defer="defer"></script>
 {% endblock content %}
