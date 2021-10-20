@@ -18,3 +18,9 @@ def signup(request):
     form = UserForm()
   context = {'form':form}
   return render(request,'common/signup.html',context)
+
+def page_not_found(request, exception):
+    """
+    404 Page not found
+    """
+    return render(request, 'common/404.html', {})
