@@ -4,12 +4,15 @@ html{
 } 
 
 body{
-  font-family: 'Poppins', sans-serif;
+  
   padding-top: 40px;
 }
 
 
-
+.login-bg{
+  margin-top: 70px;
+  padding: 30px 5px 150px;
+}
 #row-login{
   margin-top: 50px;
   border-width: 1px;
@@ -18,8 +21,13 @@ body{
   border-radius: 30px;
 }
 
+.signup-bg{
+  margin-top: 70px;
+  padding: 30px 5px 150px;
+}
 #sign-up{
-  margin-top: 50px;
+  margin-top: 150px;
+  margin-bottom: 50px;
   /* padding-top: 200px; */
   padding: 30px;
   border-width: 1px;
@@ -92,6 +100,7 @@ div.main-wall{
 /* 히어로텍스트 */
 .hero{
   height: 15px;
+  font-family: 'Poppins', sans-serif;
 }
 
 
@@ -167,9 +176,25 @@ section.map .row h1{
 /* 푸터 */
 footer{
   background-color: #CFCFCF;
-  padding: 50px;
+  padding: 20px 10px 10px;
+  font-family: 'Poppins', sans-serif;
+  text-align :center;
+}
+footer img{
+  width: 60px;
 }
 
+footer #gi{
+  width: 90px;
+}
+
+footer p{
+  font-size: 20px;
+
+}
+footer p:last-child{
+  color: rgba(0,0,0,.5);
+}
 
 
 
@@ -251,6 +276,7 @@ footer{
   border-radius: 50px;
   z-index: 1;
 }
+
 
 /* #con{
   width: 100%;
