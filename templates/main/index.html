@@ -52,6 +52,8 @@
       {% include 'footer.html' %}
     </footer>
   </section>
-  
+  <script src="{% static 'javascript/weather.js' %}"></script>
+  <script src="{% static 'javascript/map.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTQIlxBn5AfKGvsfJiormAE1esN3fcCkg&callback=initMap" async="async" defer="defer"></script>
 
 {% endblock content %}

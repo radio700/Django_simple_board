@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-  <div class="container">
-    <div class="main-wall">
+<div class="container">
+  <div class="main-wall">
+    <div class="signup-bg">
       <form id="sign-up" method="post" class="post-form" action="{% url 'common:signup' %}">
         {% csrf_token %}
         {% include "error.html" %}
@@ -26,6 +27,7 @@
           <button type="submit" class="btn btn-primary mt-3">생성하기</button>
         </div>
       </form>
+    </div>
   </div>
 </div>
   <footer>
