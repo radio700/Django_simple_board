@@ -8,7 +8,7 @@
           <tr>
             <th>번호</th>
             <th>제목</th>
-            <th>추천 수</th>
+            <th style="text-align:center;">추천 수</th>
             <th>글쓴이</th>
             <th>날짜</th>
           </tr>
@@ -30,6 +30,7 @@
           {% endfor %}
         </tbody>
       </table>
+        <a style="margin-left: 90%; font-size:20px;" href="{% url 'board:question_create' %}" class="btn btn-primary">글쓰기</a>
       
 
       <!--페이지네이터-->
@@ -72,7 +73,7 @@
         {% endif %}
       </ul>
 
-      <a href="{% url 'board:question_create' %}" class="btn btn-primary gul-wri fs-4">글쓰기</a>
+      
     </div>
   </div>
   <footer>
