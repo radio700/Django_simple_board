@@ -97,7 +97,8 @@ div.main-wall{
 /* 히어로텍스트 */
 .hero{
   height: 15px;
-  font-family: 'Poppins', sans-serif;
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: 'Black Han Sans', sans-serif;
 }
 
 
@@ -174,7 +175,7 @@ section.map .row h1{
 /* 푸터 */
 footer{
   background-color: #CFCFCF;
-  padding: 20px 10px 10px;
+  padding: 30px 5px 30px;
   font-family: 'Poppins', sans-serif;
   text-align :center;
 }
