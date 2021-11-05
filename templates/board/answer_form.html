@@ -8,7 +8,7 @@
       {% include 'error.html' %}
       <div class="form-group">
         <label class="fs-4 mb-3" for="content">답변내용</label>
-        <textarea name="content" id="content" class="form-control mb-4" rows="15"></textarea>
+        <textarea name="content" id="content" class="form-control mb-4" rows="15">{{ form.content.value|default_if_none:'' }}</textarea>
         <button style="margin-left: 90%; font-size:20px;" class="btn btn-primary" type="submit">수정하기</button>
       </div>
     </form>
