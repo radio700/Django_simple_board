@@ -8,6 +8,7 @@ class Question(models.Model):
   author = models.ForeignKey(User,on_delete=models.CASCADE, related_name='quthor_question')
   modify_date = models.DateTimeField(null=True, blank=True)
   voter = models.ManyToManyField(User,related_name='voter_question')
+  devoter = models.ManyToManyField(User,related_name='devoter_question')
   
   def __str__(self):
       return self.subject
@@ -19,6 +20,7 @@ class Answer(models.Model):
   author = models.ForeignKey(User,on_delete=models.CASCADE, related_name='answer_question')
   modify_date = models.DateTimeField(null=True, blank=True)
   voter = models.ManyToManyField(User,related_name='voter_answer')
+  devoter = models.ManyToManyField(User, related_name='devoter_answer')
 
 class Comment(models.Model):
   author = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-6 col-lg-2 col-sm-3 ">
                   <div class="d-grid gap-2">
-                    <a href="{% url 'board:vote_question' question.id  %}" class="btn btn-danger">반대 {{ question.voter.count }}</a>
+                    <a href="{% url 'board:devote_question' question.id  %}" class="btn btn-danger">반대 {{ question.devoter.count }}</a>
                   </div>
                 </div>
                 <div class="col-12 col-lg-4 col-sm-3"></div>
@@ -87,7 +87,7 @@
                   <div class="col-6 col-lg-2 col-sm-3">
                     {% comment %} <div class="border text-center bg-light mb-1 p-3">{{ answer.voter.count }}</div> {% endcomment %}
                     <div class="d-grid gap-2">
-                      <a href="{% url 'board:vote_answer' answer.id  %}" class="btn btn-danger">반대 {{ answer.voter.count }}</a>
+                      <a href="{% url 'board:devote_answer' answer.id  %}" class="btn btn-danger">반대 {{ answer.devoter.count }}</a>
                     </div>
                   </div>
                   <div class="col-12 col-4 col-sm-3"></div>
