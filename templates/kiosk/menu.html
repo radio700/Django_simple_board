@@ -2,6 +2,8 @@
 {% block content %}
   {% load static %}
 
+  <!--class Recipe(models.Model): menucode = models.IntegerField(null=False) menu_name = models.CharField(max_length=10, null=False) price = models.IntegerField(null=False)-->
+
   <div class="container mt-3">
     <div style="width:100%; max-height: 200px; overflow: hidden;" class="img-border">
       <img style="margin-top: -50%;" src="{% static 'img/banner.jpg' %}" alt="e">
@@ -21,33 +23,22 @@
       </div>
     </div>
 
-    <div class="row py-5 border border-top-0">
+    {% if menu_list %}
 
-      <div OnClick="location.href =''" style="cursor:pointer;" class="col-3 d-flex">
+    <div class="row py-5 border border-top-0">
+      {% for menu in menu_list %}
+      <div class="col-3 d-flex menuchoose">
         <img style="max-width: 100%;" src="{% static 'kiosk/bigbull.jpg' %}" alt="bigbull">
       </div>
       <div class="col-3">
-        <p style="font-size:30px; margin-top:20px">원조 빅불 세트</p>
-        <p style="font-size:30px; font-weight:bold;">7700</p>
+        <p style="font-size:30px; margin-top:20px" class="menuchoose">{{ menu.menu_name }}</p>
+        <p style="font-size:30px; font-weight:bold;" class="menuchoose">{{ menu.price }}원</p>
       </div>
+      
+      {% endfor %}
+    
 
-      <div class="col-3 d-flex">
-        <img style="max-width: 100%;" src="{% static 'kiosk/bulgogi.jpg' %}" alt="bulgogi">
-      </div>
-      <div class="col-3">
-        <p style="font-size:30px; margin-top:20px">한우 불고기 세트</p>
-        <p style="font-size:30px; font-weight:bold;">8900</p>
-      </div>
-
-      <div class="col-3 d-flex">
-        <img style="max-width: 100%;" src="{% static 'kiosk/hotcrispy.jpg' %}" alt="hotcrispy">
-      </div>
-      <div class="col-3">
-        <p style="font-size:30px; margin-top:20px">한우 불고기 세트</p>
-        <p style="font-size:30px; font-weight:bold;">8900</p>
-      </div>
-    </div>
-
+{% endif %}
     <div style="background-color: #dfdfdf;" class="total d-flex">
       <p class="flex-grow-1">총 주문 내역</p>
       <p>총금액 들어갈 자리</p>
