@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% load static %}
+
+  <div class="container mt-3">
+    <div style="width:100%; max-height: 200px; overflow: hidden;" class="img-border">
+      <img style="margin-top: -50%;" src="{% static 'img/banner.jpg' %}" alt="e">
+    </div>
+    <div style="background-color:#ffdcee;" class="row">
+      <div class="col-3">
+        <p>추천메뉴</p>
+      </div>
+      <div class="col-3">
+        <p>햄버거</p>
+      </div>
+      <div class="col-3">
+        <p>디저트/치킨</p>
+      </div>
+      <div class="col-3">
+        <p>음료/커피</p>
+      </div>
+    </div>
+
+    <div class="row py-5 border border-top-0">
+
+      <div OnClick="location.href =''" style="cursor:pointer;" class="col-3 d-flex">
+        <img style="max-width: 100%;" src="{% static 'kiosk/bigbull.jpg' %}" alt="bigbull">
+      </div>
+      <div class="col-3">
+        <p style="font-size:30px; margin-top:20px">원조 빅불 세트</p>
+        <p style="font-size:30px; font-weight:bold;">7700</p>
+      </div>
+
+      <div class="col-3 d-flex">
+        <img style="max-width: 100%;" src="{% static 'kiosk/bulgogi.jpg' %}" alt="bulgogi">
+      </div>
+      <div class="col-3">
+        <p style="font-size:30px; margin-top:20px">한우 불고기 세트</p>
+        <p style="font-size:30px; font-weight:bold;">8900</p>
+      </div>
+
+      <div class="col-3 d-flex">
+        <img style="max-width: 100%;" src="{% static 'kiosk/hotcrispy.jpg' %}" alt="hotcrispy">
+      </div>
+      <div class="col-3">
+        <p style="font-size:30px; margin-top:20px">한우 불고기 세트</p>
+        <p style="font-size:30px; font-weight:bold;">8900</p>
+      </div>
+    </div>
+
+    <div style="background-color: #dfdfdf;" class="total d-flex">
+      <p class="flex-grow-1">총 주문 내역</p>
+      <p>총금액 들어갈 자리</p>
+    </div>
+
+  </div>
+
+{% endblock content %}

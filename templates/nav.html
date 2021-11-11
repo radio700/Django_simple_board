@@ -8,6 +8,7 @@
         <a name="offhide" class="nav-link active align-content-center" href="{% url 'main:index' %}#weather-main">기상 정보 보기</a>
         <a name="offhide" class="nav-link active align-content-center" href="{% url 'main:index' %}#map-main">해당 위치 보기</a>
         <a class="nav-link active align-content-center" page="page" href="{% url 'board:index' %}">게시판보기</a>
+        <a class="nav-link active align-content-center" page="page" href="{% url 'kiosk:index' %}">키오스크로 가기</a>
       </li>
 
       <li class="nav-item d-flex align-items-center">
@@ -43,6 +44,10 @@
             {% comment %} <button class="list-group-item list-group-item-action">
               <a class="text-primary text-decoration-none" page="page" href="{% url 'board:index' %}">게시판보기</a>
             </button> {% endcomment %}
+
+            <button class="list-group-item list-group-item-action">
+              <a class="text-primary text-decoration-none" href="{% url 'kiosk:index' %}">키오스크로 가기</a>
+            </button>
 
             <button class="list-group-item list-group-item-action">
               {% if user.is_authenticated %}

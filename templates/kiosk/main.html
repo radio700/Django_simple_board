@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="container mt-3 bg-white">
-  <div class="kioskmain bg-danger">
-    <p>여기에서 주문하세요</p>
+  <div class="container mt-3">
+    <a style="text-decoration:none" href="{% url 'kiosk:menu' %}">
+      <div class="kioskmain mt-5">
+        <p style="font-size:50px; text-align:center">기다리지 않고 간편하게</p>
+        <p style="font-size:150px; text-align:center">여기에서<br>주문하세요</p>
+        <p style="font-size:50px; text-align:center">화면을 터치 해 주세요</p>
+      </div>
+    </a>
   </div>
-  
-</div>
-
 
 {% endblock content %}
