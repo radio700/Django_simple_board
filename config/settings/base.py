@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['54.180.171.183']
 # Application definition
 
 INSTALLED_APPS = [
+    'kiosk.apps.KioskConfig',
     'common.apps.CommonConfig',
     'board.apps.BoardConfig',
     'django.contrib.admin',
