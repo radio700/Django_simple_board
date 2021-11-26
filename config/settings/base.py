@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import pymysql
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -77,18 +77,18 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 # import pymysql
 
-# pymysql.install_as_MySQLdb()
+pymysql.install_as_MySQLdb()
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        # 'ENGINE':'django.db.backends.mysql',
-        # 'NAME':'j_board',
-        # 'USER':'root',
-        # 'PASSWORD':'1234',
-        # 'HOST':'127.0.0.1',
-        # 'PORT':'3307'
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'j_board',
+        'USER':'root',
+        'PASSWORD':'1234',
+        'HOST':'127.0.0.1',
+        'PORT':'3307'
     }
 }
 
