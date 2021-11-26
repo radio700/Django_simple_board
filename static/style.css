@@ -288,11 +288,7 @@ footer p:last-child{
 /* --------------menu--------------- */
 
 .menuchoose{
-  margin: 50px 0px;
-}
-
-.menuchoose:hover{
-  cursor: pointer;
+  /* margin: 50px 0px; */
 }
 
 

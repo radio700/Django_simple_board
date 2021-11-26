@@ -3,47 +3,65 @@
   {% load static %}
 
   <!--class Recipe(models.Model): menucode = models.IntegerField(null=False) menu_name = models.CharField(max_length=10, null=False) price = models.IntegerField(null=False)-->
+  <div class="menu">
+    <div class="container mt-3">
+      <div style="width:100%; max-height: 200px; overflow: hidden;" class="img-border">
+        <img style="margin-top: -50%;" src="{% static 'img/banner.jpg' %}" alt="e">
+      </div>
+      <div style="background-color:#ffdcee;" class="row">
+        <div class="col-4 text-center">
+          <p>햄버거</p>
+        </div>
+        <div class="col-4 text-center">
+          <p>디저트/치킨</p>
+        </div>
+        <div class="col-4 text-center">
+          <p>음료/커피</p>
+        </div>
+      </div>
 
-  <div class="container mt-3">
-    <div style="width:100%; max-height: 200px; overflow: hidden;" class="img-border">
-      <img style="margin-top: -50%;" src="{% static 'img/banner.jpg' %}" alt="e">
+      {% if menu_list %}
+        {% for menu in menu_list %}
+          <div class="row">
+
+            {% if menu.menucode == 'h-1' %}
+              <form action="{% url 'kiosk:jumun_menu_h1' %}" method="post">
+
+                <div class="col-6 d-flex menuchoose">
+                  <div class="btn d-flex justify-content-center">
+                    <img src="{% static 'img/kiosk/'%}{{ menu.menucode }}.jpg" class="{{ menu.menucode }}" alt="burder_img">
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="btn d-flex justify-content-center">
+                    <p style="font-size:20px; text-center" class="{{ menu.menucode }} text-center">{{ menu.menu_name }}</p>
+                  </div>
+                  <div class="btn d-flex justify-content-center">
+                    <p style="font-size:30px;" class="{{ menu.menucode }} text-center">{{ menu.price }}원</p>
+                  </div>
+                </div>
+
+              </form>
+            {% endif %}
+
+            {% if menu.menucode == 'h-2' %}{% endif %}
+            {% if menu.menucode == 'h-3' %}{% endif %}
+          {% endfor %}
+        {% endif %}
+        <div style="background-color: #dfdfdf;" class="total d-flex">
+        
+        {% for jumun in recipe.jumun_set.all %}
+        {{ jumun.count }}
+          <p style="font-size:40px">총 주문 내역</p>
+          <p style="font-size:40px; margin-left: 40px;" class="menu_show"></p>
+          <p style="font-size:40px; margin-left: 50px;" class="total_num flex-grow-1" value="plus">0</p>
+          <p>총금액 들어갈 자리</p>
+        </div>
+        {% endfor %}
+      </div>
     </div>
-    <div style="background-color:#ffdcee;" class="row">
-      <div class="col-3">
-        <p>추천메뉴</p>
-      </div>
-      <div class="col-3">
-        <p>햄버거</p>
-      </div>
-      <div class="col-3">
-        <p>디저트/치킨</p>
-      </div>
-      <div class="col-3">
-        <p>음료/커피</p>
-      </div>
-    </div>
-
-    {% if menu_list %}
-
-    <div class="row py-5 border border-top-0">
-      {% for menu in menu_list %}
-      <div class="col-3 d-flex menuchoose">
-        <img style="max-width: 100%;" src="{% static 'kiosk/bigbull.jpg' %}" alt="bigbull">
-      </div>
-      <div class="col-3">
-        <p style="font-size:30px; margin-top:20px" class="menuchoose">{{ menu.menu_name }}</p>
-        <p style="font-size:30px; font-weight:bold;" class="menuchoose">{{ menu.price }}원</p>
-      </div>
-      
-      {% endfor %}
-    
-
-{% endif %}
-    <div style="background-color: #dfdfdf;" class="total d-flex">
-      <p class="flex-grow-1">총 주문 내역</p>
-      <p>총금액 들어갈 자리</p>
-    </div>
-
   </div>
 
+  <script src="{% static 'javascript/click_menu.js' %}"></script>
 {% endblock content %}

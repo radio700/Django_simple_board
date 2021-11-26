@@ -7,6 +7,7 @@ app_name = 'kiosk'
 
 urlpatterns = [
   path('',views.index, name='index'),
-  path('menu/',views.menu, name='menu')
-
+  path('menu/',views.menu, name='menu'),
+  path('jumun/menu/h1/',views.jumun_menu_h1, name='jumun_menu_h1'),
+  
 ]
