@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from board.views import base_views
+import debug_toolbar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +25,11 @@ urlpatterns = [
     path('main/', include("main.urls")),
     path('kiosk/', include("kiosk.urls")),
     path('', base_views.index, name='index'),
+    path('__debug__/', include(debug_toolbar.urls)),
+        
+        
 ]
+
+
 
 handler404 = 'common.views.page_not_found'
